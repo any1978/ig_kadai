@@ -7,12 +7,13 @@ class UsersController < ApplicationController
         if @user.save
             redirect_to user_path(@user.id)
         else
-          render :new
+            render :new
         end
     end
 
     def show
-        @user = User.find(params[:id])
+      @user = User.find(params[:id])
+      @blogs = @user.blogs
     end
 
     private

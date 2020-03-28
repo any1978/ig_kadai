@@ -5,9 +5,15 @@ class BlogsController < ApplicationController
     # binding.pry
     # raise
   end
+
   def new
-    @blog = Blog.new
+    if params[:back]
+      @blog = Blog.new(blog_params)
+    else
+      @blog =  Blog.new
+    end
   end
+
   def create
     @blog = current_user.blogs.build(blog_params)
     @blog.user_id = current_user.id
@@ -44,13 +50,14 @@ class BlogsController < ApplicationController
   end
   
   def confirm
-    @blog = current_user.blogs.build(blog_params)
+    @blog = Blog.new(blog_params)
     render :new if @blog.invalid?   
   end 
 
   private
+
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content, :image, :image_cache)
   end
 
   # idをキーとして値を取得するメソッドを追加

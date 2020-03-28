@@ -27,7 +27,7 @@ class BlogsController < ApplicationController
   end
   
   def show
-    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    #@favorite = current_user.favorites.find_by(blog_id: @blog.id)
     # @favorites= @post.favorite_users
   end
 
@@ -57,7 +57,7 @@ class BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :content, :image, :image_cache)
+    params.require(:blog).permit(:title, :content, :image, :image_cache, :remove_img)
   end
 
   # idをキーとして値を取得するメソッドを追加

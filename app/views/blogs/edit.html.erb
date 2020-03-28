@@ -10,12 +10,28 @@
         </div>
     <% end %>
     <div class="blog_title">
-        <%= form.label :title %><br>
+        <%= form.label :タイトル %><br>
         <%= form.text_field :title %>
     </div>
     <div class="blog_content">
-      <%= form.label :content %>  <br>
+      <%= form.label :ブログ内容 %>  <br>
       <%= form.text_field :content %>
     </div>
+    <div class="blog_image">
+      <%= form.label :ブログ画像 %>  <br>
+      <%#= image_tag(@blog.image.url) %>
+      <%#= image_tag 'image.url'%>
+      <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+    </div>
+    <div class="field">
+      <%= form.label :image %>
+      <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+      <%= form.file_field :image %>
+      
+      <%= form.hidden_field :image_cache %>
+    </div>
+    <p><%= form.check_box :remove_img %> 画像を削除する</p>
+    <div class="actions">
     <%= form.submit %>
-  <% end %>
+<% end %>
+<%= link_to 'ブログ一覧画面に戻る', user_path(current_user.id) %>

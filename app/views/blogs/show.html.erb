@@ -3,10 +3,10 @@
 <p>内容: <%= @blog.content %></p>
 <p>
   <strong>Image:</strong>
-  <%= image_tag @blog.image%>
-  <%#= image_tag(@blog.image.url) if blog.image && blog.image.url %>
-  <%#= image_tag(@blog.image.url) if blog.image && blog.image.url %>
-  </p>
+  <%#= image_tag(@blog.image.url) %>
+  <%#= image_tag 'image.url'%>
+  <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+</p>
 
 <%= link_to '編集する', edit_blog_path(@blog) %>
 
@@ -17,5 +17,5 @@
     <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-
-<%= link_to 'ブログ一覧画面に戻る', blogs_path %>
+<br>
+<%= link_to 'ブログ一覧画面に戻る', user_path(current_user.id) %>

@@ -20,13 +20,14 @@ class BlogsController < ApplicationController
     if params[:back]
       render :new
     elsif @blog.save
-        redirect_to blogs_path, notice: "ブログを作成しました！"
+        redirect_to user_path, notice: "ブログを作成しました！"
     else
       render :new
     end
   end
   
   def show
+    @blog = Blog.find(params[:id])
     #@favorite = current_user.favorites.find_by(blog_id: @blog.id)
     # @favorites= @post.favorite_users
   end
@@ -38,7 +39,7 @@ class BlogsController < ApplicationController
   def update
     @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
-      redirect_to blogs_path, notice: "ブログを編集しました！"
+      redirect_to user_path, notice: "ブログを編集しました！"
     else
       render :edit
     end
@@ -46,7 +47,7 @@ class BlogsController < ApplicationController
   
   def destroy
     @blog.destroy
-    redirect_to blogs_path, notice:"ブログを削除しました！"
+    redirect_to user_path, notice:"ブログを削除しました！"
   end
   
   def confirm

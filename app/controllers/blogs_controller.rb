@@ -15,6 +15,7 @@ class BlogsController < ApplicationController
   end
 
   def create
+    @blog = Blog.new(tweet_params)
     @blog = current_user.blogs.build(blog_params)
     @blog.user_id = current_user.id
     if params[:back]
@@ -28,6 +29,7 @@ class BlogsController < ApplicationController
   
   def show
     @blog = Blog.find(params[:id])
+    @user = @blog.user
     #@favorite = current_user.favorites.find_by(blog_id: @blog.id)
     # @favorites= @post.favorite_users
   end
@@ -52,13 +54,13 @@ class BlogsController < ApplicationController
   
   def confirm
     @blog = Blog.new(blog_params)
-    render :new if @blog.invalid?   
+    redirect_to user_path(current_user.id), notice: "ブログを編集しました！" if @blog.invalid?   
   end 
 
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :content, :image, :image_cache, :remove_img)
+    params.require(:blog).permit(:title, :content, :image, :image_cache, :remove_image)
   end
 
   # idをキーとして値を取得するメソッドを追加

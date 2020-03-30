@@ -2,7 +2,7 @@
 <p>タイトル: <%= @blog.title %></p>
 <p>内容: <%= @blog.content %></p>
 <p>
-  <strong>Image:</strong>
+  Image:
   <%#= image_tag(@blog.image.url) %>
   <%#= image_tag 'image.url'%>
   <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>

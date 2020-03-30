@@ -10,6 +10,27 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap/dist/css/bootstrap.min
  *= require_tree .
  *= require_self
  */
+
+
+ footer {
+    width: 100%;
+    background-color:#eff1f3;
+    padding: 20px 0 10px 0;
+    color: rgb(107, 106, 106);
+    margin: auto;
+    padding-bottom: 10px;
+    font-size: 14px;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    border: solid 1px #d2d3d4;
+  }
+
+  html {
+    position: relative;
+    min-height: 100%;
+  }

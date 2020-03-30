@@ -17,12 +17,7 @@
       <%= form.label :content %>
       <%= form.text_field :content %>
     </div>
-    <div class="blog_image">
-      <%= form.label :ブログ画像 %>  <br>
-      <%#= image_tag(@blog.image.url) %>
-      <%#= image_tag 'image.url'%>
-      <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
-    </div>
+
     
     <div class="field">
       <%= form.label :image %>
@@ -31,7 +26,6 @@
       <%= form.hidden_field :image_cache %>
       
     </div>
-    <div><%= form.check_box :remove_img %> 画像を削除する</div>
     <div class="actions">
       <%= form.submit %>
     </div>

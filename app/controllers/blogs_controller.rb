@@ -7,6 +7,7 @@ class BlogsController < ApplicationController
   end
 
   def new
+    @blog = current_user.blogs.build
     if params[:back]
       @blog = Blog.new(blog_params)
     else
@@ -15,12 +16,9 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.new(tweet_params)
     @blog = current_user.blogs.build(blog_params)
-    @blog.user_id = current_user.id
-    if params[:back]
-      render :new
-    elsif @blog.save
+    # @blog.user_id = current_user.id
+    if @blog.save
         redirect_to user_path(current_user.id), notice: "ブログを作成しました！"
     else
       render :new
@@ -30,16 +28,15 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @user = @blog.user
-    #@favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    # @favorite = current_user.favorites.find_by(blog_id: @blog.id)
     # @favorites= @post.favorite_users
   end
 
   def edit
-    @blog = Blog.find(params[:id])
   end
 
   def update
-    @blog = Blog.find(params[:id])
+    # @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
       redirect_to user_path(current_user.id), notice: "ブログを編集しました！"
     else
@@ -53,8 +50,9 @@ class BlogsController < ApplicationController
   end
   
   def confirm
-    @blog = Blog.new(blog_params)
-    redirect_to user_path(current_user.id), notice: "ブログを編集しました！" if @blog.invalid?   
+    @blog = current_user.blogs.build(blog_params)
+    render :new if @blog.invalid?
+    # redirect_to user_path(current_user.id), notice: "ブログを編集しました！" if @blog.invalid?   
   end 
 
   private

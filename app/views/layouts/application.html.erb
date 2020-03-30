@@ -10,20 +10,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  <header>
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
-        <span class="sr-only">facebook clone</span>
-      </button>
-      <a class="navbar-brand" href="#">facebook clone
-      </a>
-    </div>
-  </div>
-  </nav>
+  <header class="header">
+    <ul clearfix>
+      <li class="left">facebook clone</li>
+    </ul>
   </header>
-  
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>
   <% end %>
@@ -34,7 +25,9 @@
     <%= link_to "Sign up", new_user_path %>
     <%= link_to "Login", new_session_path %>
   <% end %>
-  <%= yield %>
+  <div class="wrapper">
+    <%= yield %>
+  </div>
   <footer class="fixed-bottom">
     運営 tsukinoki
   </footer>

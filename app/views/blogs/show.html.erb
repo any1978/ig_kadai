@@ -8,7 +8,7 @@
   <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
 </p>
 
-<%= link_to '編集する', edit_blog_path(@blog) %>
+<%= link_to '編集する', edit_blog_path(@blog),class:'btn' %>
 
 <% unless @blog.user_id == current_user.id %>
   <% if @favorite.present? %>
@@ -17,5 +17,6 @@
     <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
+<br>
 <br>
 <%= link_to 'ブログ一覧画面に戻る', user_path(current_user.id) %>

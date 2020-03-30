@@ -15,22 +15,88 @@
  *= require_self
  */
 
+ .wrapper {
+   max-width: 70%;
+   margin: auto;
+ }
+* { 
+  margin: 0px; 
+  padding: 0px; 
+}
 
- footer {
-    width: 100%;
-    background-color:#eff1f3;
-    padding: 20px 0 10px 0;
-    color: rgb(107, 106, 106);
-    margin: auto;
-    padding-bottom: 10px;
-    font-size: 14px;
-    position: absolute;
-    text-align: center;
-    bottom: 0;
-    border: solid 1px #d2d3d4;
-  }
 
-  html {
-    position: relative;
-    min-height: 100%;
-  }
+html {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+ header {
+  background-color: #3B5998;
+  height: 50px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+header ul {
+  margin: 0;
+  padding: 0;
+}
+
+header li  {
+  display: block;
+  font-size: 2rem;
+  padding: 15px;
+  color: white;
+  list-style: none;
+  float:left;
+}
+
+
+body {
+  height: 100%; 
+  background-color: #f0f0f0;
+  width: 100%;
+}
+
+.heading {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+footer {
+  width: 100%;
+  background-color:#3B5998;
+  padding: 20px 0 10px 0;
+  color: white;
+  margin: auto;
+  padding-bottom: 10px;
+  font-size: 14px;
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.subject{
+  color: #3B5998;
+  font-size: 16px;
+  text-align: center;
+}
+
+.btn {
+  margin-top: 30px;
+  display: inline-block;
+  /* background-color: #3B5998; */
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #3B5998;
+  border: solid 2px #3B5998;
+  border-radius: 3px;
+  transition: .4s;
+}

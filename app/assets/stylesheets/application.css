@@ -16,9 +16,10 @@
  */
 
  .wrapper {
-   max-width: 70%;
+   max-width: 90%;
    margin: auto;
  }
+
 * { 
   margin: 0px; 
   padding: 0px; 
@@ -91,6 +92,7 @@ html {
 
 .btn {
   margin-top: 30px;
+  margin-bottom: 20px;
   display: inline-block;
   /* background-color: #3B5998; */
   padding: 0.3em 1em;

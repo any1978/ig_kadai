@@ -6,8 +6,8 @@
   <p>本文:<%= @blog.content %></p>
   <p>画像:<%= @blog.image %></p>
   <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
-  <%= form.hidden_field :image_cache %>
-  <%= form.submit  "登録する" %>
+  <%= form.hidden_field :image_cache %><br>
+  <%= form.submit  "登録する", class:'btn'%><br>
   <%= form.submit "戻る", name: 'back' %>
   <% end %>
 

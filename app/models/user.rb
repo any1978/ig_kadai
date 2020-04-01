@@ -7,6 +7,8 @@ class User < ApplicationRecord
     before_validation { email.downcase! }
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }
+    has_one_attached :image_name
+    mount_uploader :image_name, ImageUploader
     
     #association
     has_many :blogs

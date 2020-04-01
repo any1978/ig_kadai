@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
   
-
+  post "edit" => "users/edit"
+  post "logout" => "users#logout"
 
 end

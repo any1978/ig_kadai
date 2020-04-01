@@ -1,9 +1,15 @@
+<div>
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+<p>
+  <%= image_tag(@user.image_name.url)  if @user.image_name && @user.image_name.url %>
+</p>
 
+<%#= link_to("アカウントを編集する", "/users/#{@user.id}/edit") %>
+</div>
 <h2 class = "heading">ブログ一覧</h2>
 <p id="notice"><%= notice %></p>
-<table>
+<table class="table table-striped">
   <tr>
     <th class = "subject">タイトル</th>
     <th class = "subject">内容</th>
@@ -21,4 +27,4 @@
     </tr>
   <% end %>
 </table>
-<%= link_to '新しくブログを投稿する', new_blog_path, class:'btn' %>
+<%= link_to '新しくブログを投稿する', new_blog_path, class:"btn" %>

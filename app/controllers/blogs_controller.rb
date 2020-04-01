@@ -2,8 +2,6 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy] # destroyアクションを追加
   def index
     @blogs = Blog.all
-    # binding.pry
-    # raise
   end
 
   def new
@@ -28,7 +26,7 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @user = @blog.user
-    # @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
     # @favorites= @post.favorite_users
   end
 

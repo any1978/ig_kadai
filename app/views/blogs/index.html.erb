@@ -1,15 +1,17 @@
-<div class="main users-index">
-  <div class="container">
-    <h1 class="users-heading">ユーザー一覧</h1>
+<h1>ブログ一覧</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr>
+<% @blogs.each do |blog| %>
+  <tr>
+    <td><%= blog.title %></td>
+    <td><%= blog.content %></td>
+    <td ><%= link_to '詳細を確認する', blogs_path %></td>
+  </tr>
+<% end %>
+</table>
 
-    <% @users.each do |user| %>
-      <div class="users-index-item">
-        <div class="user-right">
-　　　　　　<!-- 下記のコードでユーザーを表示させています。 -->
-          <%= link_to(current_user.name, "/users/#{user.id}") %>
-        </div>
-      </div>
-      <% end %>
-
-  </div>
-</div>
+<%= link_to '新しくブログを投稿する', new_blog_path %>

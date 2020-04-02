@@ -3,13 +3,15 @@
 <p>内容: <%= @blog.content %></p>
 <p>
   Image:
-  <%#= image_tag(@blog.image.url) %>
-  <%#= image_tag 'image.url'%>
   <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
 </p>
-
-<%= link_to '編集する', edit_blog_path(@blog),class:'btn' %>
-
+<p>
+<% if @blog.user_id == current_user.id %>
+  <li>
+  <%= link_to '編集する', edit_blog_path(@blog),class:'btn' %>
+  </li>
+<% end %>
+</P>
 <% unless @blog.user_id == current_user.id %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>

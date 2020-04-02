@@ -9,7 +9,7 @@
   <tr>
     <td><%= blog.title %></td>
     <td><%= blog.content %></td>
-    <td ><%= link_to '詳細を確認する', blogs_path %></td>
+    <td ><%= link_to '詳細を確認する', blogs_path(blog.id) %></td>
   </tr>
 <% end %>
 </table>

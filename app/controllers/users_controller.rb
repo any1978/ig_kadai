@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy] 
+
     def new
         @user = User.new
     end
+
+ 
+
     def create
         @user = User.new(user_params)
         if @user.save
@@ -19,11 +24,11 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find_by(id: params[:id])
     end
 
+    
     def update
-        @user = User.find_by(id: params[:id])
+        @user = User.find_by(user_params)
         @user.name = params[:name]
         @user.email = params[:email]
         
@@ -33,10 +38,9 @@ class UsersController < ApplicationController
           image=params[:image]
           File.binwriter("public/user_images/#{@user.image_name}",image.read)
         end
-        
-        if @user.save
+        if @user.update(params[:id])
           flash[:notice] = "ユーザー情報を編集しました"
-          redirect_to("/users/#{@user.id}")
+          redirect_to user_path
         else
           render("users/edit")
         end
@@ -54,18 +58,23 @@ class UsersController < ApplicationController
           @password = params[:password]
           render("users/login_form")
         end
-      end
+    end
 
-      def logout
-        session[:user_id] = nil
-        flash[:notice] = "ログアウトしました"
-        redirect_to("/login")
-      end
+    def logout
+      session[:user_id] = nil
+      flash[:notice] = "ログアウトしました"
+      redirect_to("/login")
+    end
 
-      private
+    private
   
     def user_params
         params.require(:user).permit(:name, :email,:image_name, :password,
                                     :password_confirmation)
     end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
+
 end

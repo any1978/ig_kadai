@@ -4,9 +4,11 @@
 <p>
   <%= image_tag(@user.image_name.url)  if @user.image_name && @user.image_name.url %>
 </p>
-
-<%#= link_to("アカウントを編集する", "/users/#{@user.id}/edit") %>
+<%= link_to 'アカウントを編集する', edit_user_path %><br>
+<%#= link_to 'お気に入りを見る', "/users/#{@user.id}/edit") %>
 </div>
+
+
 <h2 class = "heading">ブログ一覧</h2>
 <p id="notice"><%= notice %></p>
 <table class="table table-striped">

@@ -1,0 +1,27 @@
+<%= form_with(model: @user, local: true ,url: user_choose_new ) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @user.errors.count %>件のエラーがあります。</h2>
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %><br>
+    <%= f.label :image_name, 'user image' %>
+    <%= image_tag(@user.image_name.url(:thumb)) if @user.image_name && @user.image_name.url %>
+    <%= f.file_field :image_name %>
+    <%= f.submit "Update my account", class:'btn' %>
+    <%= link_to 'ユーザーページに戻る', user_path(current_user.id) %>
+    
+<% end %>

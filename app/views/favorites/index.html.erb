@@ -2,14 +2,19 @@
 <p><%= notice %></p>
 <table>
   <tr>
+    <th>ユーザー名</th>
     <th>タイトル</th>
+    <th>画像</th>
     <th>内容</th>
   </tr>
-<% @blogs.each do |blog| %>
+<% @favorites.each do |favorite| %>
+  <%# blog = blog.find_by(id: favorite.blog_id) %>
   <tr>
-    <td><%= blog.title %></td>
-    <td><%= blog.content %></td>
-    <td ><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
+    <td><%= favorite.blog.user.name %></td>
+    <td><%= favorite.blog.title %></td>
+    <td><%= image_tag(favorite.blog.image.url(:thumb)) if favorite.blog.image && favorite.blog.image.url %></td>
+    <td><%= favorite.blog.content %></td>
+    <td ><%= link_to '詳細を確認する', blog_path(favorite.blog.id) %></td>
   </tr>
 <% end %>
 </table>

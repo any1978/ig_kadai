@@ -5,8 +5,6 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
- 
-
     def create
         @user = User.new(user_params)
         if @user.save
@@ -28,17 +26,19 @@ class UsersController < ApplicationController
 
     
     def update
-        @user = User.find_by(user_params)
-        @user.name = params[:name]
-        @user.email = params[:email]
+        # @user = User.find_by(user_params)
+        # @user.name = params[:name]
+        # @user.email = params[:email]
+        # @user.email = params[:assword]
         
         # 画像を保存する処理を追加してください
-        if params[:image]
-          @user.image_name = "#{@user.id}.jpg"
-          image=params[:image]
-          File.binwriter("public/user_images/#{@user.image_name}",image.read)
-        end
-        if @user.update(params[:id])
+        # if params[:image]
+        #   @user.image_name = "#{@user.id}.jpg"
+        #   image=params[:image]
+        #   File.binwriter("public/user_images/#{@user.image_name}",image.read)
+        # end
+        # if @user.update(params[:id])
+        if @user.update(user_params)
           flash[:notice] = "ユーザー情報を編集しました"
           redirect_to user_path
         else

@@ -5,7 +5,7 @@
   <%= image_tag(@user.image_name.url)  if @user.image_name && @user.image_name.url %>
 </p>
 <%= link_to 'アカウントを編集する', edit_user_path %><br>
-<%#= link_to 'お気に入りを見る', "/users/#{@user.id}/edit") %>
+<%= link_to 'お気に入りを見る', favorites_path, class:"btn"%>
 </div>
 
 

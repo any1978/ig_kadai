@@ -22,6 +22,6 @@
     <%= image_tag(@user.image_name.url(:thumb)) if @user.image_name && @user.image_name.url %>
     <%= f.file_field :image_name %>
     <%= f.submit "Update my account", class:'btn' %>
+    <% end %>
     <%= link_to 'ユーザーページに戻る', user_path(current_user.id) %>
     
-<% end %>

@@ -1,4 +1,5 @@
-<h1>ブログ詳細画面</h1>
+<h1><%= @user.name %>のページ</h1>
+<h2>ブログ詳細画面</h2>
 <p>タイトル: <%= @blog.title %></p>
 <p>内容: <%= @blog.content %></p>
 <p>
@@ -16,7 +17,7 @@
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
   <% else %>
-    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
+    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class:'btn' %>
   <% end %>
 <% end %>
 <br>

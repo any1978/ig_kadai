@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  
   def index
     @blogs = Blog.all
   end
@@ -15,9 +16,10 @@ class BlogsController < ApplicationController
 
   def create
     @blog = current_user.blogs.build(blog_params)
-    # @blog.user_id = current_user.id
     if @blog.save
-        redirect_to user_path(current_user.id), notice: "ブログを作成しました！"
+      binding.irb
+      UserNotifierMailer.send_submit_email(@blog.user.email).deliver_later
+      redirect_to user_path(current_user.id), notice: "ブログを作成しました！"
     else
       render :new
     end
@@ -27,7 +29,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @user = @blog.user
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
-    # @favorites= @post.favorite_users
+    @favorites= @blog.favorite_users
   end
 
   def edit

@@ -17,8 +17,7 @@ class BlogsController < ApplicationController
   def create
     @blog = current_user.blogs.build(blog_params)
     if @blog.save
-      binding.irb
-      UserNotifierMailer.send_submit_email(@blog.user.email).deliver_later
+      UsernotifierMailer.send_submit_email(@contact).deliver
       redirect_to user_path(current_user.id), notice: "ブログを作成しました！"
     else
       render :new
@@ -58,7 +57,7 @@ class BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :content, :image, :image_cache, :remove_image)
+    params.require(:blog).permit(:title, :content, :image, :image_cache, :remove_image, :email, :message)
   end
 
   # idをキーとして値を取得するメソッドを追加

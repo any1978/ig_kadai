@@ -1,6 +1,6 @@
 <h1>Favorites list</h1>
 <p><%= notice %></p>
-<table>
+<table class="table table-striped">
   <tr>
     <th class = "subject">USER NAME</th>
     <th class = "subject">TITLE</th>
@@ -19,4 +19,4 @@
 <% end %>
 </table>
 
-<%= link_to 'Post new', new_blog_path %>
+<%= link_to 'Post new', new_blog_path, class:'btn' %>

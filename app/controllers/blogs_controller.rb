@@ -18,7 +18,7 @@ class BlogsController < ApplicationController
     @blog = current_user.blogs.build(blog_params)
     if @blog.save
       UsernotifierMailer.send_submit_email(@contact).deliver
-      redirect_to user_path(current_user.id), notice: "ブログを作成しました！"
+      redirect_to user_path(current_user.id), notice: "ブログを作成しました！確認メールを送信しました！"
     else
       render :new
     end
@@ -37,7 +37,8 @@ class BlogsController < ApplicationController
   def update
     # @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
-      redirect_to user_path(current_user.id), notice: "ブログを編集しました！"
+      UsernotifierMailer.send_submit_email(@contact).deliver
+      redirect_to user_path(current_user.id), notice: "ブログを編集しました！確認メールを送信しました！"
     else
       render :edit
     end

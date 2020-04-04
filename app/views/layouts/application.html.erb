@@ -14,22 +14,13 @@
     <ul clearfix>
       <li>instagram clone</li>
       <% if logged_in? %>
-        <li>
-        <%= link_to "Profile", user_path(current_user.id) %>
-        </li>
-        <li>
-        <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-        </li>
-        <li>
-        <%= link_to "みんなの投稿一覧", blogs_path %>
-        </li>
-    <% else %>
-        <li>
-        <%= link_to "Sign up", new_user_path %>
-        </li>
-        <li>
-        <%= link_to "Login", new_session_path %>
-        </li>
+        <li><%= link_to "Mypage", user_path(current_user.id) %></li>
+        <li><%= link_to "Everyone's post", blogs_path %></li>
+        <li><%= link_to 'Favorites', favorites_path %></li>
+        <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Sign up", new_user_path %></li>
+        <li><%= link_to "Login", new_session_path %></li>
       <% end %>
     </ul>
   </header>
@@ -40,7 +31,7 @@
   <div class="wrapper">
     <%= yield %>
   </div>
-  <footer class="fixed-bottom">
+  <footer>
   instagram clone by tsukinoki
   </footer>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

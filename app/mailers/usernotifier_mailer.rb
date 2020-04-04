@@ -1,8 +1,8 @@
 class UsernotifierMailer < ApplicationMailer
 
     def send_submit_email(contact)
-        @contact = @blog
-        mail to: "katsuhiro.tsukinoki@gmail.com", subject: "Thanks for Submit for blogapp"
+        @contact = contact
+        mail to: "katsuhiro.tsukinoki@gmail.com", subject: "Post notification"
        
     end
     

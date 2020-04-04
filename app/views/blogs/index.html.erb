@@ -1,18 +1,21 @@
-<h1>ブログ一覧</h1>
+<h1>Everyone's post</h1>
 <p><%= notice %></p>
-<table>
-
+<table class="table table-striped">
+  <tr>
+    <th class = "subject">USER NAME</th>
+    <th class = "subject">IMAGE</th>
+    <th class = "subject">TITLE</th>    
+    <th class = "subject">CONTENT</th>
+    <th colspan="3"></th>
+  </tr>
 <% @blogs.each do |blog| %>
-    <th>name</th>
+  <tr>
     <td><%= blog.user.name %></td>
-    <th>title</th>
-    <td><%= blog.title %></td>
-    <th>画像</th>
     <td><%= image_tag(blog.image.url(:thumb)) if blog.image && blog.image.url %></td>
-    <th>内容</th>
+    <td><%= blog.title %></td>
     <td><%= blog.content %></td>
-    <td ><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
+    <td ><%= link_to 'View the details', blog_path(blog.id) %></td>
   </tr>
 <% end %>
-
-<%= link_to '新しくブログを投稿する', new_blog_path %>
+</table>
+<%= link_to 'Post new', new_blog_path %>

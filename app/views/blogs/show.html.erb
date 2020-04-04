@@ -1,25 +1,21 @@
-<h1><%= @user.name %>のページ</h1>
-<h2>ブログ詳細画面</h2>
-<p>タイトル: <%= @blog.title %></p>
-<p>内容: <%= @blog.content %></p>
-<p>
-  Image:
+<h1><%= @user.name %>'s page</h1>
+<h2>Post details</h2>
+<p class = "subject">TITLE:</p>
+<%= @blog.title %>
+<p class = "subject">
+  Image:<br>
   <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
 </p>
-<p>
-<% if @blog.user_id == current_user.id %>
-  <li>
-  <%= link_to '編集する', edit_blog_path(@blog),class:'btn' %>
-  </li>
-<% end %>
-</P>
+<p class = "subject">CONTENT:</p>
+<%= @blog.content %><br>
+
 <% unless @blog.user_id == current_user.id %>
   <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Remove Favorites', favorite_path(id: @favorite.id), method: :delete, class: 'btn' %>
   <% else %>
-    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class:'btn' %>
+    <%= link_to 'Add to Favorites', favorites_path(blog_id: @blog.id), method: :post, class:'btn' %>
   <% end %>
 <% end %>
 <br>
 <br>
-<%= link_to 'ブログ一覧画面に戻る', user_path(current_user.id) %>
+<%= link_to 'Back to Mypage', user_path(current_user.id) %>

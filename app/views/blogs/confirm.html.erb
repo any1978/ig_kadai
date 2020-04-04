@@ -7,8 +7,8 @@
   <p>画像:<%= @blog.image %></p>
   <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
   <%= form.hidden_field :image_cache %><br>
-  <%= form.submit  "登録する", class:'btn'%><br>
-  <%= form.submit "戻る", name: 'back' %>
+  <%= form.submit  "Submit", class:'btn'%><br>
+  <%= form.submit "Back to Mypage", name: 'back' %>
   <% end %>
 
   <%= form_with(model:@blog, url:new_blog_path, local:true, method:"get") do |form| %>

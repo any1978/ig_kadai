@@ -1,11 +1,11 @@
-<h1>お気に入り一覧</h1>
+<h1>Favorites list</h1>
 <p><%= notice %></p>
 <table>
   <tr>
-    <th>ユーザー名</th>
-    <th>タイトル</th>
-    <th>画像</th>
-    <th>内容</th>
+    <th class = "subject">USER NAME</th>
+    <th class = "subject">TITLE</th>
+    <th class = "subject">IMAGE</th>
+    <th class = "subject">CONTENT</th>
   </tr>
 <% @favorites.each do |favorite| %>
   <%# blog = blog.find_by(id: favorite.blog_id) %>
@@ -14,9 +14,9 @@
     <td><%= favorite.blog.title %></td>
     <td><%= image_tag(favorite.blog.image.url(:thumb)) if favorite.blog.image && favorite.blog.image.url %></td>
     <td><%= favorite.blog.content %></td>
-    <td ><%= link_to '詳細を確認する', blog_path(favorite.blog.id) %></td>
+    <td ><%= link_to 'View the details', blog_path(favorite.blog.id) %></td>
   </tr>
 <% end %>
 </table>
 
-<%= link_to '新しくブログを投稿する', new_blog_path %>
+<%= link_to 'Post new', new_blog_path %>

@@ -37,7 +37,7 @@ class BlogsController < ApplicationController
   def update
     # @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
-      UsernotifierMailer.send_submit_email(@contact).deliver
+      # UsernotifierMailer.send_submit_email(@contact).deliver
       redirect_to user_path(current_user.id), notice: "ブログを編集しました！確認メールを送信しました！"
     else
       render :edit

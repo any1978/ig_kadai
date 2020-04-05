@@ -1,11 +1,12 @@
 <h3>確認画面</h3>
 <%= form_with(model: @blog, url: blogs_path, local: true,) do |form| %>
   <%= form.hidden_field :title %>
+  <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
-  <p>タイトル:<%= @blog.title %></p>
-  <p>本文:<%= @blog.content %></p>
-  <p>画像:<%= @blog.image %></p>
+  <p>TITLE:<%= @blog.title %></p>
+  <p>IMAGE:<%= @blog.image %></p>
   <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
-  <%= form.hidden_field :image_cache %><br>
+  <p>CONTENT:<%= @blog.content %></p>
   <%= form.submit  "Submit", class:'btn'%><br>
+  <%= form.submit "戻る", name: 'back' %>
 <% end %>

@@ -17,7 +17,7 @@ class BlogsController < ApplicationController
   def create
     @blog = current_user.blogs.build(blog_params)
     if @blog.save
-      UsernotifierMailer.send_submit_email(@contact).deliver
+      # UsernotifierMailer.send_submit_email(@contact).deliver
       redirect_to user_path(current_user.id), notice: "ブログを作成しました！確認メールを送信しました！"
     else
       render :new

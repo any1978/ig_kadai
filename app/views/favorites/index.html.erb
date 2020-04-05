@@ -8,7 +8,7 @@
     <th class = "subject">CONTENT</th>
   </tr>
 <% @favorites.each do |favorite| %>
-  <%# blog = blog.find_by(id: favorite.blog_id) %>
+  <%# blog = Blog.find_by(id: favorite.blog_id) %>
   <tr>
     <td><%= favorite.blog.user.name %></td>
     <td><%= favorite.blog.title %></td>
@@ -19,4 +19,4 @@
 <% end %>
 </table>
 
-<%= link_to 'Post new', new_blog_path, class:'btn' %>
+<%= link_to 'Back to Mypage', user_path(current_user.id) %>

@@ -32,7 +32,7 @@ class BlogsController < ApplicationController
   end
 
   def edit
-    if @blog.user_id != @current_user.id
+    if @blog.user_id != current_user.id
       flash[:notice] = "編集するが権限がありません"
       redirect_to blogs_path
     end
@@ -49,12 +49,12 @@ class BlogsController < ApplicationController
   end
   
   def destroy
-    if @blog.user_id != @current_user.id
-      flash[:notice] = "削除するが権限がありません"
-      redirect_to blogs_path
+    if @blog.user_id != current_user.id
+      flash[:notice] = "削除する権限がありません"
+      redirect_to user_path
     end
-      @blog.destroy
-      redirect_to user_path(current_user.id), notice:"ブログを削除しました！"
+    @blog.destroy
+    redirect_to user_path(current_user.id), notice:"ブログを削除しました！"
   end
   
   def confirm

@@ -1,13 +1,14 @@
 <h1>Favorites list</h1>
 <p><%= notice %></p>
-<table class="table table-striped">
+<table class= "table table-striped" >
   <tr>
     <th class = "subject">USER NAME</th>
     <th class = "subject">TITLE</th>
     <th class = "subject">IMAGE</th>
     <th class = "subject">CONTENT</th>
+    <th class = "subject"></th>
   </tr>
-<% @favorites.each do |favorite| %>
+  <% @favorites.each do |favorite| %>
   <%# blog = Blog.find_by(id: favorite.blog_id) %>
   <tr>
     <td><%= favorite.blog.user.name %></td>
@@ -16,7 +17,7 @@
     <td><%= favorite.blog.content %></td>
     <td ><%= link_to 'View the details', blog_path(favorite.blog.id) %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
 <%= link_to 'Back to Mypage', user_path(current_user.id) %>
